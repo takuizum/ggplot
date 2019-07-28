@@ -12,7 +12,12 @@ organdata %>% ggplot(aes(x = country, y = donors))+ # transpose, but don't chang
   coord_flip()
 
 # boxplot with reordered
-organdata %>% ggplot(aes(x = reorder(country, donors, na.rm = TRUE), 
+organdata %>% ggplot(aes(x = reorder(country, 
+                                     donors, 
+                                     # optional arguments
+                                     FUN = mean, # you like to reoder the categorical variables
+                                     na.rm = TRUE # optional arguments of FUN
+                                     ), 
                          y = donors))+
   geom_boxplot() +
   coord_flip() + 
